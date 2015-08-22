@@ -22,12 +22,15 @@ public class Tilemap : MonoBehaviour {
                         break;
                     case 'P':
                         CreatePlayer(x, y);
+                        CreateFloor(x, y);
+                        break;
+                    default:
+                        CreateFloor(x, y);
                         break;
                     }
-                    CreateFloor(x, y);
                     x++;
                 }
-                y++;
+                y--;
             }
         }
     }

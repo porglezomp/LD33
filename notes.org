@@ -42,6 +42,7 @@
 
 * Developing the game
 ** TODO list
+   - [X] Camera motion
    - [-] Basic motion [3/5]
      - [X] Add basic motion
      - [X] Colliding with walls
