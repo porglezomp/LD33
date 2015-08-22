@@ -3,6 +3,10 @@
 .#*
 *~
 
+### Blender ###
+*.blend1
+*.blend2
+
 ### OS X ###
 
 .DS_Store
