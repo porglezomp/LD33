@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ public class Node {
 
 public class Route : IComparable<Route> {
     float length = 0;
-    List<Node> nodes = new List<Node>();
+    public List<Node> nodes = new List<Node>();
 
     public Node lastNode {
         get { return nodes.Last(); }
@@ -74,6 +75,7 @@ public class PathFinder {
     public static void Init(Tile[,] inputGrid) {
         int width = inputGrid.GetLength(0);
         int height = inputGrid.GetLength(1);
+
         world = new Node[width, height];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -86,15 +88,15 @@ public class PathFinder {
                 if (inputGrid[x, y] == Tile.EmptyTile) {
                     // top row
                     if (y > 0) {
-                        if (x > 0 && inputGrid[x - 1, y - 1] == Tile.EmptyTile) {
-                            world[x, y].AddNeighbor(world[x - 1, y - 1]);
-                        }
+                        // if (x > 0 && inputGrid[x - 1, y - 1] == Tile.EmptyTile) {
+                        //     world[x, y].AddNeighbor(world[x - 1, y - 1]);
+                        // }
                         if (inputGrid[x, y - 1] == Tile.EmptyTile) {
                             world[x, y].AddNeighbor(world[x, y - 1]);
                         }
-                        if (x < width - 1 && inputGrid[x + 1, y - 1] == Tile.EmptyTile) {
-                            world[x, y].AddNeighbor(world[x + 1, y - 1]);
-                        }
+                        // if (x < width - 1 && inputGrid[x + 1, y - 1] == Tile.EmptyTile) {
+                        //     world[x, y].AddNeighbor(world[x + 1, y - 1]);
+                        // }
                     }
                     // middle row
                     {
@@ -108,15 +110,15 @@ public class PathFinder {
                     }
                     // bottom row
                     if (y < height - 1) {
-                        if (x > 0 && inputGrid[x - 1, y + 1] == Tile.EmptyTile) {
-                            world[x, y].AddNeighbor(world[x - 1, y + 1]);
-                        }
+                        // if (x > 0 && inputGrid[x - 1, y + 1] == Tile.EmptyTile) {
+                        //     world[x, y].AddNeighbor(world[x - 1, y + 1]);
+                        // }
                         if (inputGrid[x, y + 1] == Tile.EmptyTile) {
                             world[x, y].AddNeighbor(world[x, y + 1]);
                         }
-                        if (x < width - 1 && inputGrid[x + 1, y + 1] == Tile.EmptyTile) {
-                            world[x, y].AddNeighbor(world[x + 1, y + 1]);
-                        }
+                        // if (x < width - 1 && inputGrid[x + 1, y + 1] == Tile.EmptyTile) {
+                        //     world[x, y].AddNeighbor(world[x + 1, y + 1]);
+                        // }
                     }
                 }
             }
@@ -131,12 +133,17 @@ public class PathFinder {
                 var first = new Route();
                 first.AddNode(element);
                 searchSet.Insert(first);
+                break;
             }
+        }
+
+        if (!searchSet.hasItems) {
+            Debug.LogError("Pathfinding from an out of bounds location " + fromX + " " + fromY);
+            return null;
         }
 
         var visited = new Dictionary<Node, bool>();
         visited.Add(searchSet.root.lastNode, false);
-        bool foundItem = false;
         while (searchSet.hasItems) {
             var testRoute = searchSet.PopRoot();
             foreach (var neighbor in testRoute.lastNode.neighbors) {

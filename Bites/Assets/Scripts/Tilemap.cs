@@ -46,18 +46,18 @@ public class Tilemap : MonoBehaviour {
                 y--;
             }
         }
-        var output = new Tile[grid.Count, grid[0].Count];
+        var output = new Tile[grid[0].Count, grid.Count];
 
         for(int i = 0; i < grid.Count; i++) {
             for(int j = 0; j < output.GetLength(1); j++)
-                output[i, j] = grid[i][j];
+                output[i, j] = grid[j][i];
         }
         PathFinder.Init(output);
     }
 
     void CreateObject(GameObject obj, int x, int y) {
         Vector3 position = new Vector3(x, y, 0);
-        GameObject.Instantiate(obj, position, Quaternion.identity);
+        GameObject.Instantiate(obj, position, obj.transform.rotation);
     }
 
     void CreateFloor(int x, int y) {
