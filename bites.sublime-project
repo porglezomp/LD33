@@ -19,5 +19,6 @@
     {
         "tab_size": 4,
         "translate_tabs_to_spaces": true
-    }
+    },
+    "solution_file": "./Bites/Bites.sln"
 }

@@ -39,3 +39,13 @@
     - Bright lights slowly hurt you, make it more obvious you're a vampire
   - For some reason people take a while to realize that that guy in a cape
     is a vampire. They're so silly!
+
+* Developing the game
+** TODO list
+   - [-] Basic motion [2/4]
+     - [X] Add basic motion
+     - [X] Colliding with walls
+     - [ ] Make moving in all directions uniform
+     - [ ] Remove likely collision jaggies
+   - [ ] Light
+   - [ ] People
