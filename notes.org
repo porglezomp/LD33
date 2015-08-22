@@ -1,0 +1,27 @@
+* Theme: You Are the Monster
+
+* Ideas
+  - You are the monster in the center of the temple, you manipulate people
+    to get them to give you more sacrifices
+    - Have to keep them happy, but also keep yourself fed
+    - Tentacles to grab priests roaming around
+    - Shoot column of fire!
+  - Hide to jump out and scare people
+  - Controlling the big bad corporation
+    - Try to extract all the resource
+    - Poison all the habitats
+    - Lay pipeline that destroys stuff
+    - Fracking to poison water supplies
+  - HP Lovecraft inspired - but how ???
+  - Calvin and Hobbes style "get the kid out of bed" monster
+  - Simple game made monster themed
+    - Space Invaders
+  - Vampire sneak around and bite people
+    - Monaco style
+    - Avoid bright lights, avoid being seen
+    - Bite everyone as fast as possible
+    - Network leaderboard? Multiple levels?
+  - Lemmings like --- can of Monster Energy as a powerup
+  - Jekyll and Hyde
+  - You Are the Monster Truck
+
