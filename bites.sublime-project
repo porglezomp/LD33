@@ -1,0 +1,23 @@
+{
+    "folders": 
+    [
+        {
+            "path": ".",
+            "folder_exclude_patterns":
+            [
+                "Bites/Temp",
+                "Bites/ProjectSettings",
+                "Bites/Library"
+            ],
+            "file_exclude_patterns":
+            [
+                "*.meta"
+            ]
+        }
+    ],
+    "settings":
+    {
+        "tab_size": 4,
+        "translate_tabs_to_spaces": true
+    }
+}

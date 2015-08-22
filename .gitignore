@@ -1,8 +1,13 @@
-# Emacs files
+### Emacs files ###
 \#*\#
 .#*
 *~
 
+### OS X ###
+
+.DS_Store
+
+### Unity3D ###
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
