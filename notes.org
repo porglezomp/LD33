@@ -25,3 +25,17 @@
   - Jekyll and Hyde
   - You Are the Monster Truck
 
+* Vampire!
+  - Points system
+    - Pints system :: heyooooooo
+    - Speed :: causes the player to get them selves into trouble, which is fun
+    - 
+  - Turn into a bat for a short amount of time
+    - One / reduced health while bat
+    - Can fit in small spaces / fly over gaps
+    - If anyone sees you transform they're alerted
+  - Stay in the dark
+    - Turn into dust if you're exposed to *direct sunlight*
+    - Bright lights slowly hurt you, make it more obvious you're a vampire
+  - For some reason people take a while to realize that that guy in a cape
+    is a vampire. They're so silly!
