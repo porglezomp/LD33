@@ -42,10 +42,17 @@
 
 * Developing the game
 ** TODO list
-   - [-] Basic motion [2/4]
+   - [-] Basic motion [3/5]
      - [X] Add basic motion
      - [X] Colliding with walls
      - [ ] Make moving in all directions uniform
-     - [ ] Remove likely collision jaggies
+     - [ ] Improve momentum curve
+     - [X] Remove likely collision jaggies
+   - [-] Levels [3/5]
+     - [X] Read tilemaps from ASCII tilemaps
+     - [X] Generate levels based on map
+     - [X] Place player based on tilemap
+     - [ ] Add more decorations to tilemap
+     - [ ] Change to better tilemap format
    - [ ] Light
    - [ ] People
