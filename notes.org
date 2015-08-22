@@ -61,14 +61,16 @@
        - [ ] Cross
        - [ ] Decorative elements
    - [ ] Light
-   - [-] People [1/3]
+   - [-] People [2/5]
      - [X] Boring still people
      - [ ] Ability to turn them into vampires
-     - [ ] People moving around (A* ?)
+     - [X] People moving around (A* ?)
+     - [ ] People acting interesting and responding
+     - [ ] People with weapons (stakes, torches, etc.)
 
 ** TODO for art
    - [-] Character art [0/4]
-     - [ ] Still character
+     - [ ] Still character model
      - [-] Animation (incl. cape moving?) [0/5]
        - [ ] Walk animation
        - [-] Jump animation ?
@@ -84,8 +86,8 @@
        - [ ] Walk animation
        - [ ] Surprise animation
        - [ ] Turn into vampire animation
-   - [ ] Tile art [0/6]
-     - [ ] Floor texture
+   - [-] Tile art [1/6]
+     - [X] Floor texture (currently very bad)
      - [ ] Wall tiles
      - [ ] Cross
      - [ ] Torch

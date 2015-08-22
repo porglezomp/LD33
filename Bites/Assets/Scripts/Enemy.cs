@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator WalkPathToPoint(Vector3 position) {
         Route path = null;
-        while (path == null) {
+        for (int i = 0; i < 32 && path == null; i++) {
             position = new Vector3(Random.value * 16, -Random.value * 16);
             path = FindPathTo(position);
         }

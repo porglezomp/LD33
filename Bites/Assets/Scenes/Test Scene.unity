@@ -115,9 +115,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filename: Scenes/map.amap
-  floorObject: {fileID: 173100, guid: ef9d9973a66d24b229479ccd46d79281, type: 2}
+  floorObject: {fileID: 195362, guid: c886ef25ba964480ab977ece71f3250b, type: 2}
   wallObject: {fileID: 147826, guid: 074f422e2f3a44b3bb828068b2ef363b, type: 2}
   playerObject: {fileID: 114860, guid: d5d2b5a2ec0bc4879a10ae84e626ad6c, type: 2}
+  enemyObject: {fileID: 174390, guid: e203622bbc28b4222a885ab038cc774a, type: 2}
 --- !u!4 &462909326
 Transform:
   m_ObjectHideFlags: 0
@@ -142,6 +143,7 @@ GameObject:
   - 92: {fileID: 1388083745}
   - 124: {fileID: 1388083744}
   - 81: {fileID: 1388083743}
+  - 114: {fileID: 1388083748}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -215,6 +217,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1388083748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1388083742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b3763e1cc6e4c2c9ff9657484a58e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1685308655
 GameObject:
   m_ObjectHideFlags: 0
