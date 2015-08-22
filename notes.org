@@ -25,7 +25,7 @@
   - Jekyll and Hyde
   - You Are the Monster Truck
 
-* Vampire!
+* Selected: Vampire!
   - Points system
     - Pints system :: heyooooooo
     - Speed :: causes the player to get them selves into trouble, which is fun
@@ -41,7 +41,7 @@
     is a vampire. They're so silly!
 
 * Developing the game
-** TODO list
+** TODO for the first day - programming
    - [X] Camera motion
    - [-] Basic motion [3/5]
      - [X] Add basic motion
@@ -49,11 +49,46 @@
      - [ ] Make moving in all directions uniform
      - [ ] Improve momentum curve
      - [X] Remove likely collision jaggies
-   - [-] Levels [3/5]
+   - [-] Levels [3/6]
      - [X] Read tilemaps from ASCII tilemaps
      - [X] Generate levels based on map
      - [X] Place player based on tilemap
      - [ ] Add more decorations to tilemap
-     - [ ] Change to better tilemap format
+     - [ ] Change to better tilemap format (image?)
+     - [ ] Add more level elements [0/4]
+       - [ ] Pits
+       - [ ] Bars / grates
+       - [ ] Cross
+       - [ ] Decorative elements
    - [ ] Light
-   - [ ] People
+   - [ ] People [0/3]
+     - [ ] Boring still people
+     - [ ] Ability to turn them into vampires
+     - [ ] People moving around (A* ?)
+
+** TODO for art
+   - [-] Character art [0/4]
+     - [ ] Still character
+     - [-] Animation (incl. cape moving?) [0/5]
+       - [ ] Walk animation
+       - [-] Jump animation ?
+       - [ ] Bite animation
+       - [ ] Turn into bat animation
+       - [ ] Turn into dust animation
+     - [ ] Footstep sounds
+     - [ ] More sounds
+   - [ ] Enemies art [0/3]
+     - [ ] Still enemies
+     - [ ] Vampire version of still enemies
+     - [ ] Animated enemies [0/3]
+       - [ ] Walk animation
+       - [ ] Surprise animation
+       - [ ] Turn into vampire animation
+   - [ ] Tile art [0/6]
+     - [ ] Floor texture
+     - [ ] Wall tiles
+     - [ ] Cross
+     - [ ] Torch
+     - [ ] Coffin
+     - [ ] Altar
+
