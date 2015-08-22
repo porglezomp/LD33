@@ -61,8 +61,8 @@
        - [ ] Cross
        - [ ] Decorative elements
    - [ ] Light
-   - [ ] People [0/3]
-     - [ ] Boring still people
+   - [-] People [1/3]
+     - [X] Boring still people
      - [ ] Ability to turn them into vampires
      - [ ] People moving around (A* ?)
 
