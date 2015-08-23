@@ -70,11 +70,13 @@ public class Tilemap : MonoBehaviour {
     }
 
     void OnDrawGizmos () {
-        for (int i = 0; i < map.GetLength(0); i++) {
-            for (int j = 0; j < map.GetLength(1); j++) {
-                if (map[i, j] == Tile.EmptyTile) {
-                    var position = new Vector3(PathFinder.world[i, j].x, PathFinder.world[i, j].y, -1);
-                    Gizmos.DrawWireSphere(position, 0.25f);
+        if (map != null) {
+            for (int i = 0; i < map.GetLength(0); i++) {
+                for (int j = 0; j < map.GetLength(1); j++) {
+                    if (map[i, j] == Tile.EmptyTile) {
+                        var position = new Vector3(PathFinder.world[i, j].x, PathFinder.world[i, j].y, -1);
+                        Gizmos.DrawWireSphere(position, 0.25f);
+                    }
                 }
             }
         }

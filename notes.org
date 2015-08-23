@@ -41,39 +41,52 @@
     is a vampire. They're so silly!
 
 * Developing the game
-** TODO for the first day - programming
+** TODO for programming
    - [X] Camera motion
-   - [-] Basic motion [3/5]
+   - [-] Basic motion [4/5]
      - [X] Add basic motion
      - [X] Colliding with walls
-     - [ ] Make moving in all directions uniform
+     - [X] Make moving in all directions uniform
      - [ ] Improve momentum curve
      - [X] Remove likely collision jaggies
+   - [ ] Pints system [0/5]
+     - [ ] Drinking blood / biting gives you pints
+     - [ ] You very slowly lose pints, (hunger?) so speed matters
+     - [ ] Pints act as health, so getting hurt reduces your score
+     - [ ] Leaderboard for who can get the most pints
+     - [ ] Destroying crosses gives you pints (?)
    - [-] Levels [3/6]
      - [X] Read tilemaps from ASCII tilemaps
      - [X] Generate levels based on map
      - [X] Place player based on tilemap
      - [ ] Add more decorations to tilemap
      - [ ] Change to better tilemap format (image?)
-     - [ ] Add more level elements [0/4]
-       - [ ] Pits
+     - [-] Add more level elements [1/4]
+       - [X] Pits
        - [ ] Bars / grates
        - [ ] Cross
        - [ ] Decorative elements
-   - [ ] Light
+   - [ ] Light [0/2]
+     - [ ] Dim light makes people notice you faster
+     - [ ] Bright light / sunlight kills you almost immediately
    - [-] People [2/5]
      - [X] Boring still people
      - [ ] Ability to turn them into vampires
-     - [X] People moving around (A* ?)
-     - [ ] People acting interesting and responding
+     - [X] People moving around (Dijkstra's Algorithm for pathfinding)
+     - [ ] People acting interesting and responding [0/4]
+       - [ ] People notice that you've a vampire over time
+       - [ ] People notice immediately when you bite someone
+       - [ ] People notice immediately if you turn into a bat
+       - [ ] Dim light makes people notice you faster
      - [ ] People with weapons (stakes, torches, etc.)
+       - Torch makes people notice you faster
 
 ** TODO for art
-   - [-] Character art [0/4]
+   - [ ] Character art [0/4]
      - [ ] Still character model
-     - [-] Animation (incl. cape moving?) [0/5]
+     - [ ] Animation (incl. cape moving?) [0/5]
        - [ ] Walk animation
-       - [-] Jump animation ?
+       - [ ] Jump animation ?
        - [ ] Bite animation
        - [ ] Turn into bat animation
        - [ ] Turn into dust animation
@@ -86,11 +99,12 @@
        - [ ] Walk animation
        - [ ] Surprise animation
        - [ ] Turn into vampire animation
-   - [-] Tile art [1/6]
+   - [-] Tile art [3/6]
      - [X] Floor texture (currently very bad)
-     - [ ] Wall tiles
+     - [X] Wall tiles
      - [ ] Cross
-     - [ ] Torch
+     - [X] Torch
      - [ ] Coffin
      - [ ] Altar
+   - [ ] Awesome Dracula style music
 
