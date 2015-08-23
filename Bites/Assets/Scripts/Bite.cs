@@ -7,11 +7,6 @@ public class Bite : MonoBehaviour {
     Vector3 biteCenter {
         get { return transform.position + transform.up * 0.2f; }
     }
-
-    // Use this for initialization
-    void Start () {
-    
-    }
     
     // Update is called once per frame
     void Update () {

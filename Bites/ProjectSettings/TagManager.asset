@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Pints Display
+  - Menu
+  - HUD
+  - Finish Screen
   layers:
   - Default
   - TransparentFX

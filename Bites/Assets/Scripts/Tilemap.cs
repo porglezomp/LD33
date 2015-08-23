@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 
 public class Tilemap : MonoBehaviour {
-    public string filename;
     public GameObject floorObject;
     public GameObject wallObject;
     public GameObject playerObject;
@@ -15,7 +14,7 @@ public class Tilemap : MonoBehaviour {
 
     Tile[,] map;
     
-    void Start () {
+    public void InitWithMap(string filename) {
         Pints.Init();
         StartCoroutine(Pints.PintsDecay());
         RenderSettings.ambientLight = Color.black;
@@ -33,7 +32,7 @@ public class Tilemap : MonoBehaviour {
                     var tile = Tile.EmptyTile;
                     switch (character) {
                     case '#':
-                        CreateObject(wallObject, x, y);
+                        CreateObject(wallObject, x, y).tag = "Map Tile";
                         tile = Tile.WallTile;
                         break;
                     case '!':
@@ -41,29 +40,30 @@ public class Tilemap : MonoBehaviour {
                         CreateFloor(x, y);
                         break;
                     case '?':
-                        CreateObject(coffinObject, x, y);
-                        CreateFloor(x, y);
+                        CreateObject(coffinObject, x, y).tag = "Map Tile";
+                        CreateFloor(x, y).tag = "Map Tile";
                         tile = Tile.WallTile;
                         break;
                     case 'E':
-                        CreateObject(enemyObject, x, y);
-                        CreateFloor(x, y);
+                        CreateObject(enemyObject, x, y).tag = "Map Tile";
+                        CreateFloor(x, y).tag = "Map Tile";
                         break;
                     case '+':
-                        CreateObject(crossObject, x, y);
-                        CreateFloor(x, y);
+                        CreateObject(crossObject, x, y).tag = "Map Tile";
+                        CreateFloor(x, y).tag = "Map Tile";
                         tile = Tile.WallTile;
                         break;
                     case 'T':
                         var obj = CreateObject(torchObject, x, y);
+                        obj.tag = "Map Tile";
                         ObjectRegistry.instance.RegisterObjectForKey(obj, "Light");
-                        CreateFloor(x, y);
+                        CreateFloor(x, y).tag = "Map Tile";
                         break;
                     case '_':
                         tile = Tile.WallTile;
                         break;
                     default:
-                        CreateFloor(x, y);
+                        CreateFloor(x, y).tag = "Map Tile";
                         break;
                     }
                     row.Add(tile);
@@ -79,7 +79,13 @@ public class Tilemap : MonoBehaviour {
                 map[i, j] = grid[j][i];
         }
         PathFinder.Init(map);
-        Game.StartGame();
+    }
+
+    public void DestroyMap() {
+        foreach (var tile in GameObject.FindGameObjectsWithTag("Map Tile")) {
+            Destroy(tile);
+        }
+        Destroy(GameObject.FindWithTag("Player"));
     }
 
     GameObject CreateObject(GameObject obj, int x, int y) {

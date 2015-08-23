@@ -2,11 +2,6 @@
 using System.Collections;
 
 public class VampireLook : MonoBehaviour {
-
-    // Use this for initialization
-    void Start () {
-    
-    }
     
     // Update is called once per frame
     Vector3 mousePos;

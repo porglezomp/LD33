@@ -49,6 +49,7 @@
      - [X] Make moving in all directions uniform
      - [X] Improve momentum curve
      - [X] Remove likely collision jaggies
+   - [X] Menu
    - [-] Pints system [3/6]
      - [X] Display number of pints
      - [X] Drinking blood / biting gives you pints
