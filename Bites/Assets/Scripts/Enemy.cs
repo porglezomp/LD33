@@ -8,6 +8,14 @@ public class Enemy : MonoBehaviour {
     public Material fadeMaterial;
     float speed = 2;
     float numberOfPints = 1;
+    float awareness = 0;
+    float awarenessThreshold = 5;
+    float maxAwareness = 7;
+    bool aware { get { return awareness > awarenessThreshold; } }
+    bool hasWeapon = false;
+    Vampire player {
+        get { return GameObject.FindWithTag("Player").GetComponent<Vampire>(); }
+    }
 
     // Use this for initialization
     void Start () {
@@ -41,12 +49,38 @@ public class Enemy : MonoBehaviour {
     
     // Update is called once per frame
     bool shouldWalk = true;
+    IEnumerator currentAction = null;
     void Update () {
+        if (CanSeePlayer()) {
+            Debug.Log("Can see player! " + awareness);
+            if (aware) {
+                awareness = maxAwareness;
+            } else {
+                awareness += player.suspiciousness * Time.deltaTime;
+            }
+        }
+
         if (shouldWalk) {
             shouldWalk = false;
-            var randomPoint = new Vector3(Random.value * 24, Random.value * 16);
-            StartCoroutine(WalkPathToPoint(randomPoint));
+            Interrupt(currentAction);
+            var destination = new Vector3(Random.value * 24, Random.value * 16);
+            currentAction = WalkPathToPoint(destination);
+            StartCoroutine(currentAction);
         }
+    }
+
+    bool CanSeePlayer() {
+        RaycastHit hit;
+        var direction = player.transform.position - transform.position;
+        if (Physics.Raycast(transform.position, direction, out hit, direction.magnitude + 1)) {
+            return hit.collider.gameObject.tag == "Player";
+        }
+        return false;
+    }
+
+    void Interrupt(IEnumerator routine) {
+        if (routine == null) return;
+        StopCoroutine(routine);
     }
 
     IEnumerator WalkPathToPoint(Vector3 position) {

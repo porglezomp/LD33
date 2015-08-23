@@ -14,7 +14,7 @@ public class Tilemap : MonoBehaviour {
 
     Tile[,] map;
     
-    void Awake () {
+    void Start () {
         Pints.Init();
         StartCoroutine(Pints.PintsDecay());
 
