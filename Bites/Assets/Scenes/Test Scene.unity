@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 462909326}
   - 114: {fileID: 462909325}
+  - 114: {fileID: 462909327}
   m_Layer: 0
   m_Name: Startup
   m_TagString: Untagged
@@ -119,6 +120,8 @@ MonoBehaviour:
   wallObject: {fileID: 147826, guid: 074f422e2f3a44b3bb828068b2ef363b, type: 2}
   playerObject: {fileID: 114860, guid: d5d2b5a2ec0bc4879a10ae84e626ad6c, type: 2}
   enemyObject: {fileID: 174390, guid: e203622bbc28b4222a885ab038cc774a, type: 2}
+  crossObject: {fileID: 180776, guid: 884dc916be37046f58300268343836b9, type: 2}
+  torchObject: {fileID: 162938, guid: 10f82c462136f4bca9afe12c79ac3e84, type: 2}
 --- !u!4 &462909326
 Transform:
   m_ObjectHideFlags: 0
@@ -131,6 +134,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &462909327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462909324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f585cd3e4e74edea0e8c178076be15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1061084151
 GameObject:
   m_ObjectHideFlags: 0

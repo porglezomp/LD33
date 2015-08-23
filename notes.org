@@ -56,16 +56,16 @@
      - [ ] Pints act as health, so getting hurt reduces your score
      - [ ] Leaderboard for who can get the most pints
      - [ ] Destroying crosses gives you pints (?)
-   - [-] Levels [3/6]
+   - [-] Levels [4/6]
      - [X] Read tilemaps from ASCII tilemaps
      - [X] Generate levels based on map
      - [X] Place player based on tilemap
-     - [ ] Add more decorations to tilemap
+     - [X] Add more decorations to tilemap
      - [ ] Change to better tilemap format (image?)
-     - [-] Add more level elements [1/4]
+     - [-] Add more level elements [2/4]
        - [X] Pits
        - [ ] Bars / grates
-       - [ ] Cross
+       - [X] Cross
        - [ ] Decorative elements
    - [ ] Light [0/2]
      - [ ] Dim light makes people notice you faster
@@ -79,8 +79,8 @@
        - [ ] People notice immediately when you bite someone
        - [ ] People notice immediately if you turn into a bat
        - [ ] Dim light makes people notice you faster
-     - [ ] People with weapons (stakes, torches, etc.)
-       - Torch makes people notice you faster
+     - [ ] People with weapons (stakes, torches, etc.) [0/1]
+       - [ ] Torch makes people notice you faster
 
 ** TODO for art
    - [-] Character art [1/5]
@@ -88,24 +88,24 @@
      - [ ] Texture the character
      - [ ] Animation (incl. cape moving?) [0/5]
        - [ ] Walk animation
-       - [ ] Jump animation ?
        - [ ] Bite animation
        - [ ] Turn into bat animation
        - [ ] Turn into dust animation
      - [ ] Footstep sounds
      - [ ] More sounds
-   - [ ] Enemies art [0/3]
+   - [-] Enemies art [0/3]
      - [ ] Still enemies
-     - [ ] Vampire version of still enemies
-     - [ ] Animated enemies [0/3]
+     - [-] Vampire version of still enemies
+     - [-] Animated enemies [0/4]
        - [ ] Walk animation
        - [ ] Surprise animation
-       - [ ] Turn into vampire animation
-   - [-] Tile art [3/6]
+       - [-] Turn into vampire animation
+       - [ ] Attack animation
+   - [-] Tile art [4/6]
      - [X] Floor texture (currently very bad)
      - [X] Wall tiles
      - [X] Torch
-     - [ ] Cross
+     - [X] Cross
      - [ ] Coffin
      - [ ] Altar
    - [ ] Awesome Dracula style music

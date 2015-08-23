@@ -9,6 +9,8 @@ public class Tilemap : MonoBehaviour {
     public GameObject wallObject;
     public GameObject playerObject;
     public GameObject enemyObject;
+    public GameObject crossObject;
+    public GameObject torchObject;
 
     Tile[,] map;
     
@@ -38,6 +40,15 @@ public class Tilemap : MonoBehaviour {
                         break;
                     case 'E':
                         CreateObject(enemyObject, x, y);
+                        CreateFloor(x, y);
+                        break;
+                    case '+':
+                        CreateObject(crossObject, x, y);
+                        CreateFloor(x, y);
+                        tile = Tile.WallTile;
+                        break;
+                    case 'T':
+                        CreateObject(torchObject, x, y);
                         CreateFloor(x, y);
                         break;
                     case '_':
