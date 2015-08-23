@@ -13,6 +13,9 @@ public class Tilemap : MonoBehaviour {
     Tile[,] map;
     
     void Awake () {
+        Pints.Init();
+        StartCoroutine(Pints.PintsDecay());
+
         var path = Path.Combine(Application.dataPath, filename);
         var grid = new List<List<Tile>>();
         using (var file = new StreamReader(path)) {
@@ -57,6 +60,7 @@ public class Tilemap : MonoBehaviour {
                 map[i, j] = grid[j][i];
         }
         PathFinder.Init(map);
+        Game.StartGame();
     }
 
     void CreateObject(GameObject obj, int x, int y) {

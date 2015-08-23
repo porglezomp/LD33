@@ -49,7 +49,8 @@
      - [X] Make moving in all directions uniform
      - [ ] Improve momentum curve
      - [X] Remove likely collision jaggies
-   - [ ] Pints system [0/5]
+   - [-] Pints system [1/6]
+     - [X] Display number of pints
      - [ ] Drinking blood / biting gives you pints
      - [ ] You very slowly lose pints, (hunger?) so speed matters
      - [ ] Pints act as health, so getting hurt reduces your score
@@ -82,8 +83,9 @@
        - Torch makes people notice you faster
 
 ** TODO for art
-   - [ ] Character art [0/4]
-     - [ ] Still character model
+   - [-] Character art [1/5]
+     - [X] Still character model
+     - [ ] Texture the character
      - [ ] Animation (incl. cape moving?) [0/5]
        - [ ] Walk animation
        - [ ] Jump animation ?
@@ -102,8 +104,8 @@
    - [-] Tile art [3/6]
      - [X] Floor texture (currently very bad)
      - [X] Wall tiles
-     - [ ] Cross
      - [X] Torch
+     - [ ] Cross
      - [ ] Coffin
      - [ ] Altar
    - [ ] Awesome Dracula style music
