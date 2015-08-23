@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634188736c0ae46f5b192b4bb2d27028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeMaterial: {fileID: 2100000, guid: ae8bca3583f90453ba1761c3b6f6914d, type: 2}
 --- !u!136 &13629188
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -113,6 +114,10 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fadeMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: ae8bca3583f90453ba1761c3b6f6914d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174390}

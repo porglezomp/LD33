@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour {
     new Rigidbody rigidbody;
     public Material fadeMaterial;
     float speed = 2;
+    float numberOfPints = 1;
 
     // Use this for initialization
     void Start () {
@@ -19,6 +20,7 @@ public class Enemy : MonoBehaviour {
     }
 
     IEnumerator FadeOut() {
+        GetComponent<Collider>().enabled = false;
         var renderer = GetComponent<Renderer>();
         renderer.material = fadeMaterial;
         renderer.shadowCastingMode = ShadowCastingMode.Off;
@@ -29,6 +31,8 @@ public class Enemy : MonoBehaviour {
         while (timer > 0) {
             timer -= Time.deltaTime;
             color.a = timer / fadeOutDuration;
+            var fraction = Time.deltaTime / fadeOutDuration;
+            Pints.AddPints(numberOfPints * fraction);
             renderer.material.color = color;
             yield return 0;
         }

@@ -17,9 +17,7 @@ public class Bite : MonoBehaviour {
     void Update () {
         if (Input.GetButtonDown("Bite")) {
             foreach (var collider in Physics.OverlapSphere(biteCenter, biteRadius)) {
-                if (collider.gameObject.tag == "Enemy") {
-                    collider.gameObject.SendMessage("Bite");
-                }
+                collider.gameObject.SendMessage("Bite", SendMessageOptions.DontRequireReceiver);
             }
         }
     }
