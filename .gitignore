@@ -5,7 +5,9 @@
 
 ### Blender ###
 *.blend1
+*.blend1.meta
 *.blend2
+*.blend2.meta
 
 ### OS X ###
 

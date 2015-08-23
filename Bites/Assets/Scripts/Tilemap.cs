@@ -36,6 +36,9 @@ public class Tilemap : MonoBehaviour {
                         CreateFloor(x, y);
                         row.Add(Tile.EmptyTile);
                         break;
+                    case '_':
+                        row.Add(Tile.WallTile);
+                        break;
                     default:
                         CreateFloor(x, y);
                         row.Add(Tile.EmptyTile);
