@@ -13,6 +13,8 @@ GameObject:
   - 114: {fileID: 11407622}
   - 54: {fileID: 5448190}
   - 136: {fileID: 13616734}
+  - 114: {fileID: 11420836}
+  - 114: {fileID: 11425158}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -90,6 +92,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.79999995
+--- !u!114 &11420836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d03bca3a494e245caa61503a6b806549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11425158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52755850038ec46f380dc8d4f65becf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &13616734
 CapsuleCollider:
   m_ObjectHideFlags: 1

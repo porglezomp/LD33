@@ -1,13 +1,38 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering;
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
     new Rigidbody rigidbody;
+    public Material fadeMaterial;
+    float speed = 2;
 
     // Use this for initialization
     void Start () {
         rigidbody = GetComponent<Rigidbody>();
+    }
+
+    public void Bite() {
+        StartCoroutine(FadeOut());
+        speed /= 2;
+    }
+
+    IEnumerator FadeOut() {
+        var renderer = GetComponent<Renderer>();
+        renderer.material = fadeMaterial;
+        renderer.shadowCastingMode = ShadowCastingMode.Off;
+        var color = renderer.material.color;
+
+        const float fadeOutDuration = 2;
+        float timer = fadeOutDuration;
+        while (timer > 0) {
+            timer -= Time.deltaTime;
+            color.a = timer / fadeOutDuration;
+            renderer.material.color = color;
+            yield return 0;
+        }
+        Destroy(gameObject);
     }
     
     // Update is called once per frame
@@ -48,7 +73,7 @@ public class Enemy : MonoBehaviour {
     IEnumerator WalkToPoint(float x, float y) {
         var targetPosition = new Vector3(x, y, 0);
         while (Vector3.Distance(targetPosition, transform.position) > 0.1) {
-            rigidbody.MovePosition(Vector3.MoveTowards(transform.position, targetPosition, 2 * Time.deltaTime));
+            rigidbody.MovePosition(Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime));
             yield return 0;
         }
     }

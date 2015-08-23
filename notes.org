@@ -49,10 +49,10 @@
      - [X] Make moving in all directions uniform
      - [ ] Improve momentum curve
      - [X] Remove likely collision jaggies
-   - [-] Pints system [1/6]
+   - [-] Pints system [2/6]
      - [X] Display number of pints
      - [ ] Drinking blood / biting gives you pints
-     - [ ] You very slowly lose pints, (hunger?) so speed matters
+     - [X] You very slowly lose pints, (hunger?) so speed matters
      - [ ] Pints act as health, so getting hurt reduces your score
      - [ ] Leaderboard for who can get the most pints
      - [ ] Destroying crosses gives you pints (?)
@@ -70,9 +70,9 @@
    - [ ] Light [0/2]
      - [ ] Dim light makes people notice you faster
      - [ ] Bright light / sunlight kills you almost immediately
-   - [-] People [2/5]
+   - [-] People [3/5]
      - [X] Boring still people
-     - [ ] Ability to turn them into vampires
+     - [X] Ability to turn them into vampires
      - [X] People moving around (Dijkstra's Algorithm for pathfinding)
      - [ ] People acting interesting and responding [0/4]
        - [ ] People notice that you've a vampire over time
