@@ -71,7 +71,7 @@ public class Route : IComparable<Route> {
 }
 
 public class PathFinder {
-    static Node[,] world;
+    public static Node[,] world;
     public static void Init(Tile[,] inputGrid) {
         int width = inputGrid.GetLength(0);
         int height = inputGrid.GetLength(1);
@@ -86,39 +86,34 @@ public class PathFinder {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 if (inputGrid[x, y] == Tile.EmptyTile) {
-                    // top row
-                    if (y > 0) {
-                        // if (x > 0 && inputGrid[x - 1, y - 1] == Tile.EmptyTile) {
-                        //     world[x, y].AddNeighbor(world[x - 1, y - 1]);
-                        // }
-                        if (inputGrid[x, y - 1] == Tile.EmptyTile) {
-                            world[x, y].AddNeighbor(world[x, y - 1]);
-                        }
-                        // if (x < width - 1 && inputGrid[x + 1, y - 1] == Tile.EmptyTile) {
-                        //     world[x, y].AddNeighbor(world[x + 1, y - 1]);
-                        // }
+                    bool hasAbove = false;
+                    if (y > 0 && inputGrid[x, y - 1] == Tile.EmptyTile) {
+                        hasAbove = true;
+                        world[x, y].AddNeighbor(world[x, y - 1]);
                     }
-                    // middle row
-                    {
-                        if (x > 0 && inputGrid[x - 1, y] == Tile.EmptyTile) {
-                            world[x, y].AddNeighbor(world[x - 1, y]);
-                        }
-                        // self
-                        if (x < width - 1 && inputGrid[x + 1, y] == Tile.EmptyTile) {
-                            world[x, y].AddNeighbor(world[x + 1, y]);
-                        }
+
+                    bool hasBelow = false;
+                    if (y < height - 1 && inputGrid[x, y + 1] == Tile.EmptyTile) {
+                        hasBelow = true;
+                        world[x, y].AddNeighbor(world[x, y + 1]);
                     }
-                    // bottom row
-                    if (y < height - 1) {
-                        // if (x > 0 && inputGrid[x - 1, y + 1] == Tile.EmptyTile) {
-                        //     world[x, y].AddNeighbor(world[x - 1, y + 1]);
-                        // }
-                        if (inputGrid[x, y + 1] == Tile.EmptyTile) {
-                            world[x, y].AddNeighbor(world[x, y + 1]);
-                        }
-                        // if (x < width - 1 && inputGrid[x + 1, y + 1] == Tile.EmptyTile) {
-                        //     world[x, y].AddNeighbor(world[x + 1, y + 1]);
-                        // }
+
+                    // Left
+                    if (x > 0 && inputGrid[x - 1, y] == Tile.EmptyTile) {
+                        world[x, y].AddNeighbor(world[x - 1, y]);
+                        if (hasAbove && inputGrid[x - 1, y - 1] == Tile.EmptyTile)
+                            world[x, y].AddNeighbor(world[x - 1, y - 1]);
+                        if (hasBelow && inputGrid[x - 1, y + 1] == Tile.EmptyTile)
+                            world[x, y].AddNeighbor(world[x - 1, y + 1]);
+                    }
+                    
+                    // Right
+                    if (x < width - 1 && inputGrid[x + 1, y] == Tile.EmptyTile) {
+                        world[x, y].AddNeighbor(world[x + 1, y]);
+                        if (hasAbove && inputGrid[x + 1, y - 1] == Tile.EmptyTile)
+                            world[x, y].AddNeighbor(world[x + 1, y - 1]);
+                        if (hasBelow && inputGrid[x + 1, y + 1] == Tile.EmptyTile)
+                            world[x, y].AddNeighbor(world[x + 1, y + 1]);
                     }
                 }
             }

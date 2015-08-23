@@ -9,6 +9,8 @@ public class Tilemap : MonoBehaviour {
     public GameObject wallObject;
     public GameObject playerObject;
     public GameObject enemyObject;
+
+    Tile[,] map;
     
     void Awake () {
         var path = Path.Combine(Application.dataPath, filename);
@@ -21,41 +23,40 @@ public class Tilemap : MonoBehaviour {
                 var row = new List<Tile>();
                 grid.Add(row);
                 foreach (var character in line) {
+                    var tile = Tile.EmptyTile;
                     switch (character) {
                     case '#':
                         CreateObject(wallObject, x, y);
-                        row.Add(Tile.WallTile);
+                        tile = Tile.WallTile;
                         break;
                     case 'P':
                         CreateObject(playerObject, x, y);
                         CreateFloor(x, y);
-                        row.Add(Tile.EmptyTile);
                         break;
                     case 'E':
                         CreateObject(enemyObject, x, y);
                         CreateFloor(x, y);
-                        row.Add(Tile.EmptyTile);
                         break;
                     case '_':
-                        row.Add(Tile.WallTile);
+                        tile = Tile.WallTile;
                         break;
                     default:
                         CreateFloor(x, y);
-                        row.Add(Tile.EmptyTile);
                         break;
                     }
+                    row.Add(tile);
                     x++;
                 }
-                y--;
+                y++;
             }
         }
-        var output = new Tile[grid[0].Count, grid.Count];
+        map = new Tile[grid[0].Count, grid.Count];
 
-        for(int i = 0; i < grid.Count; i++) {
-            for(int j = 0; j < output.GetLength(1); j++)
-                output[i, j] = grid[j][i];
+        for(int i = 0; i < map.GetLength(0); i++) {
+            for(int j = 0; j < map.GetLength(1); j++)
+                map[i, j] = grid[j][i];
         }
-        PathFinder.Init(output);
+        PathFinder.Init(map);
     }
 
     void CreateObject(GameObject obj, int x, int y) {
@@ -66,5 +67,16 @@ public class Tilemap : MonoBehaviour {
     void CreateFloor(int x, int y) {
         Vector3 position = new Vector3(x, y, 1);
         GameObject.Instantiate(floorObject, position, Quaternion.identity);
+    }
+
+    void OnDrawGizmos () {
+        for (int i = 0; i < map.GetLength(0); i++) {
+            for (int j = 0; j < map.GetLength(1); j++) {
+                if (map[i, j] == Tile.EmptyTile) {
+                    var position = new Vector3(PathFinder.world[i, j].x, PathFinder.world[i, j].y, -1);
+                    Gizmos.DrawWireSphere(position, 0.25f);
+                }
+            }
+        }
     }
 }
