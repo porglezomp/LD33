@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour {
     void Update () {
         if (shouldWalk) {
             shouldWalk = false;
-            var randomPoint = new Vector3(Random.value * 16, -Random.value * 16);
+            var randomPoint = new Vector3(Random.value * 24, -Random.value * 16);
             StartCoroutine(WalkPathToPoint(randomPoint));
         }
     }
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour {
     IEnumerator WalkPathToPoint(Vector3 position) {
         Route path = null;
         for (int i = 0; i < 32 && path == null; i++) {
-            position = new Vector3(Random.value * 16, -Random.value * 16);
+            position = new Vector3(Random.value * 24, -Random.value * 16);
             path = FindPathTo(position);
         }
 
