@@ -43,11 +43,11 @@
 * Developing the game
 ** TODO for programming
    - [X] Camera motion
-   - [-] Basic motion [4/5]
+   - [X] Basic motion [5/5]
      - [X] Add basic motion
      - [X] Colliding with walls
      - [X] Make moving in all directions uniform
-     - [ ] Improve momentum curve
+     - [X] Improve momentum curve
      - [X] Remove likely collision jaggies
    - [-] Pints system [3/6]
      - [X] Display number of pints
@@ -67,18 +67,18 @@
        - [ ] Bars / grates
        - [X] Cross
        - [ ] Decorative elements
-   - [ ] Light [0/2]
-     - [ ] Dim light makes people notice you faster
+   - [-] Light [1/2]
+     - [X] Dim light makes people notice you faster
      - [ ] Bright light / sunlight kills you almost immediately
    - [-] People [3/5]
      - [X] Boring still people
      - [X] Ability to turn them into vampires
      - [X] People moving around (Dijkstra's Algorithm for pathfinding)
-     - [ ] People acting interesting and responding [0/4]
-       - [ ] People notice that you've a vampire over time
+     - [-] People acting interesting and responding [2/4]
+       - [X] People notice that you've a vampire over time
        - [ ] People notice immediately when you bite someone
        - [ ] People notice immediately if you turn into a bat
-       - [ ] Dim light makes people notice you faster
+       - [X] Dim light makes people notice you faster
      - [ ] People with weapons (stakes, torches, etc.) [0/1]
        - [ ] Torch makes people notice you faster
 

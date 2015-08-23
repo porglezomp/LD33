@@ -17,6 +17,7 @@ public class Tilemap : MonoBehaviour {
     void Start () {
         Pints.Init();
         StartCoroutine(Pints.PintsDecay());
+        RenderSettings.ambientLight = Color.black;
 
         var path = Path.Combine(Application.dataPath, filename);
         var grid = new List<List<Tile>>();
@@ -48,7 +49,8 @@ public class Tilemap : MonoBehaviour {
                         tile = Tile.WallTile;
                         break;
                     case 'T':
-                        CreateObject(torchObject, x, y);
+                        var obj = CreateObject(torchObject, x, y);
+                        ObjectRegistry.instance.RegisterObjectForKey(obj, "Light");
                         CreateFloor(x, y);
                         break;
                     case '_':
@@ -74,14 +76,14 @@ public class Tilemap : MonoBehaviour {
         Game.StartGame();
     }
 
-    void CreateObject(GameObject obj, int x, int y) {
+    GameObject CreateObject(GameObject obj, int x, int y) {
         Vector3 position = new Vector3(x, y, 0);
-        GameObject.Instantiate(obj, position, obj.transform.rotation);
+        return (GameObject) GameObject.Instantiate(obj, position, obj.transform.rotation);
     }
 
-    void CreateFloor(int x, int y) {
+    GameObject CreateFloor(int x, int y) {
         Vector3 position = new Vector3(x, y, 1);
-        GameObject.Instantiate(floorObject, position, Quaternion.identity);
+        return (GameObject) GameObject.Instantiate(floorObject, position, Quaternion.identity);
     }
 
     void OnDrawGizmos () {

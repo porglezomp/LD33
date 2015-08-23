@@ -17,4 +17,13 @@ public class ObjectRegistry : MonoBehaviour {
         return null;
     }
 
+    public void RegisterObjectForKey(GameObject obj, string key) {
+        var objectList = ObjectsForKey(key);
+        if (objectList == null) {
+            objectList = new List<GameObject>();
+            objects.Add(key, objectList);
+        }
+        objectList.Add(obj);
+    }
+
 }

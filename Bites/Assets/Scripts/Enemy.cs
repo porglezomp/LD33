@@ -52,7 +52,6 @@ public class Enemy : MonoBehaviour {
     IEnumerator currentAction = null;
     void Update () {
         if (CanSeePlayer()) {
-            Debug.Log("Can see player! " + awareness);
             if (aware) {
                 awareness = maxAwareness;
             } else {
