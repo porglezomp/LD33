@@ -98,7 +98,7 @@ GameObject:
   - 114: {fileID: 462909325}
   - 114: {fileID: 462909327}
   m_Layer: 0
-  m_Name: Startup
+  m_Name: Singleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,6 +122,7 @@ MonoBehaviour:
   enemyObject: {fileID: 174390, guid: e203622bbc28b4222a885ab038cc774a, type: 2}
   crossObject: {fileID: 180776, guid: 884dc916be37046f58300268343836b9, type: 2}
   torchObject: {fileID: 162938, guid: 10f82c462136f4bca9afe12c79ac3e84, type: 2}
+  coffinObject: {fileID: 141728, guid: 98780923e2e7c4aa2b74c912607727f2, type: 2}
 --- !u!4 &462909326
 Transform:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class Tilemap : MonoBehaviour {
     public GameObject enemyObject;
     public GameObject crossObject;
     public GameObject torchObject;
+    public GameObject coffinObject;
 
     Tile[,] map;
     
@@ -35,9 +36,14 @@ public class Tilemap : MonoBehaviour {
                         CreateObject(wallObject, x, y);
                         tile = Tile.WallTile;
                         break;
-                    case 'P':
+                    case '!':
                         CreateObject(playerObject, x, y);
                         CreateFloor(x, y);
+                        break;
+                    case '?':
+                        CreateObject(coffinObject, x, y);
+                        CreateFloor(x, y);
+                        tile = Tile.WallTile;
                         break;
                     case 'E':
                         CreateObject(enemyObject, x, y);

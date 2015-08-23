@@ -62,8 +62,9 @@
      - [X] Place player based on tilemap
      - [X] Add more decorations to tilemap
      - [ ] Change to better tilemap format (image?)
-     - [-] Add more level elements [2/4]
+     - [-] Add more level elements [2/5]
        - [X] Pits
+       - [ ] Coffin (complete the level)
        - [ ] Bars / grates
        - [X] Cross
        - [ ] Decorative elements
@@ -86,7 +87,7 @@
    - [-] Character art [1/5]
      - [X] Still character model
      - [ ] Texture the character
-     - [ ] Animation (incl. cape moving?) [0/5]
+     - [ ] Animation (incl. cape moving?) [0/4]
        - [ ] Walk animation
        - [ ] Bite animation
        - [ ] Turn into bat animation
@@ -101,12 +102,12 @@
        - [ ] Surprise animation
        - [-] Turn into vampire animation
        - [ ] Attack animation
-   - [-] Tile art [4/6]
+   - [-] Tile art [5/6]
      - [X] Floor texture (currently very bad)
      - [X] Wall tiles
      - [X] Torch
      - [X] Cross
-     - [ ] Coffin
+     - [X] Coffin
      - [ ] Altar
    - [ ] Awesome Dracula style music
 
