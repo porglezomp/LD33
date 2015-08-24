@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour {
     }
     
     // Update is called once per frame
-    bool shouldWalk = true;
+    bool interrupt = true;
     IEnumerator currentAction = null;
     void Update () {
         if (CanSeePlayer()) {
@@ -56,14 +56,25 @@ public class Enemy : MonoBehaviour {
                 awareness = maxAwareness;
             } else {
                 awareness += player.suspiciousness * Time.deltaTime;
+                if (aware) interrupt = true;
             }
         }
 
-        if (shouldWalk) {
-            shouldWalk = false;
+        if (interrupt) {
+            interrupt = false;
             Interrupt(currentAction);
-            var destination = new Vector3(Random.value * 24, Random.value * 16);
-            currentAction = WalkPathToPoint(destination);
+            
+            if (aware) {
+                if (hasWeapon) {
+                    currentAction = AttackPlayer();
+                } else {
+                    currentAction = SearchForWeapon();
+                }
+            } else { 
+                var destination = new Vector3(Random.value * 24, Random.value * 16);
+                currentAction = WalkPathToPoint(destination);
+            }
+
             StartCoroutine(currentAction);
         }
     }
@@ -82,6 +93,23 @@ public class Enemy : MonoBehaviour {
         StopCoroutine(routine);
     }
 
+    IEnumerator AttackPlayer() {
+        yield return 0;
+        interrupt = true;
+    }
+
+    IEnumerator SearchForWeapon() {
+        var items = ObjectRegistry.instance.ObjectsForKey("Weapon");
+        if (items != null) {
+            var index = (int) (Random.value * items.Count);
+            var target = items[index].transform.position;
+            var path = WalkPathToPoint(target);
+            while (path.MoveNext()) { yield return 0; }
+            hasWeapon = true;
+        }
+        interrupt = true;
+    }
+
     IEnumerator WalkPathToPoint(Vector3 position) {
         Route path = null;
         for (int i = 0; i < 32 && path == null; i++) {
@@ -92,13 +120,14 @@ public class Enemy : MonoBehaviour {
         Debug.Log("In order to get to " + position + ", " + gameObject.name + " is walking " + path);
         if (path != null) {
             foreach (var node in path.nodes) {
-                while (WalkToPoint(node.x, node.y).MoveNext()) {
+                var walk = WalkToPoint(node.x, node.y);
+                while (walk.MoveNext()) {
                     DrawRoute(path);
                     yield return 0;
                 }
             }
         }
-        shouldWalk = true;
+        interrupt = true;
     }
 
     void DrawRoute(Route path) {

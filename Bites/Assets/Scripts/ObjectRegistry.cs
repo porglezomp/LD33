@@ -12,6 +12,7 @@ public class ObjectRegistry : MonoBehaviour {
 
     public List<GameObject> ObjectsForKey(string key) {
         if (objects.ContainsKey(key)) {
+            objects[key].RemoveAll(item => item == null);
             return objects[key];
         }
         return null;

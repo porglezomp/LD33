@@ -11,6 +11,7 @@ public class Tilemap : MonoBehaviour {
     public GameObject crossObject;
     public GameObject torchObject;
     public GameObject coffinObject;
+    public GameObject stakesObject;
 
     Tile[,] map;
     
@@ -21,56 +22,61 @@ public class Tilemap : MonoBehaviour {
 
         var path = Path.Combine(Application.dataPath, filename);
         var grid = new List<List<Tile>>();
-        using (var file = new StreamReader(path)) {
-            string line;
-            int x = 0, y = 0;
-            while ((line = file.ReadLine()) != null) {
-                x = 0;
-                var row = new List<Tile>();
-                grid.Add(row);
-                foreach (var character in line) {
-                    var tile = Tile.EmptyTile;
-                    switch (character) {
-                    case '#':
-                        CreateObject(wallObject, x, y).tag = "Map Tile";
-                        tile = Tile.WallTile;
-                        break;
-                    case '!':
-                        CreateObject(playerObject, x, y);
-                        CreateFloor(x, y);
-                        break;
-                    case '?':
-                        CreateObject(coffinObject, x, y).tag = "Map Tile";
-                        CreateFloor(x, y).tag = "Map Tile";
-                        tile = Tile.WallTile;
-                        break;
-                    case 'E':
-                        CreateObject(enemyObject, x, y).tag = "Map Tile";
-                        CreateFloor(x, y).tag = "Map Tile";
-                        break;
-                    case '+':
-                        CreateObject(crossObject, x, y).tag = "Map Tile";
-                        CreateFloor(x, y).tag = "Map Tile";
-                        tile = Tile.WallTile;
-                        break;
-                    case 'T':
-                        var obj = CreateObject(torchObject, x, y);
-                        obj.tag = "Map Tile";
-                        ObjectRegistry.instance.RegisterObjectForKey(obj, "Light");
-                        CreateFloor(x, y).tag = "Map Tile";
-                        break;
-                    case '_':
-                        tile = Tile.WallTile;
-                        break;
-                    default:
-                        CreateFloor(x, y).tag = "Map Tile";
-                        break;
-                    }
-                    row.Add(tile);
-                    x++;
+        int x = 0, y = 0;
+        var file = Resources.Load(filename) as TextAsset;
+        foreach (var line in file.text.Split('\n')) {
+            x = 0;
+            var row = new List<Tile>();
+            grid.Add(row);
+            foreach (var character in line) {
+                var tile = Tile.EmptyTile;
+                GameObject obj;
+                switch (character) {
+                case '#':
+                    CreateObject(wallObject, x, y).tag = "Map Tile";
+                    tile = Tile.WallTile;
+                    break;
+                case '!':
+                    CreateObject(playerObject, x, y);
+                    CreateFloor(x, y);
+                    break;
+                case '?':
+                    CreateObject(coffinObject, x, y).tag = "Map Tile";
+                    CreateFloor(x, y).tag = "Map Tile";
+                    tile = Tile.WallTile;
+                    break;
+                case 'E':
+                    CreateObject(enemyObject, x, y).tag = "Map Tile";
+                    CreateFloor(x, y).tag = "Map Tile";
+                    break;
+                case '+':
+                    CreateObject(crossObject, x, y).tag = "Map Tile";
+                    CreateFloor(x, y).tag = "Map Tile";
+                    tile = Tile.WallTile;
+                    break;
+                case 'T':
+                    obj = CreateObject(torchObject, x, y);
+                    obj.tag = "Map Tile";
+                    ObjectRegistry.instance.RegisterObjectForKey(obj, "Light");
+                    CreateFloor(x, y).tag = "Map Tile";
+                    break;
+                case 'W':
+                    obj = CreateObject(stakesObject, x, y);
+                    obj.tag = "Map Tile";
+                    ObjectRegistry.instance.RegisterObjectForKey(obj, "Weapon");
+                    CreateFloor(x, y).tag = "Map Tile";
+                    break;
+                case '_':
+                    tile = Tile.WallTile;
+                    break;
+                default:
+                    CreateFloor(x, y).tag = "Map Tile";
+                    break;
                 }
-                y++;
+                row.Add(tile);
+                x++;
             }
+            y++;
         }
         map = new Tile[grid[0].Count, grid.Count];
 

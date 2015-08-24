@@ -63,9 +63,9 @@
      - [X] Place player based on tilemap
      - [X] Add more decorations to tilemap
      - [ ] Change to better tilemap format (image?)
-     - [-] Add more level elements [2/5]
+     - [-] Add more level elements [3/5]
        - [X] Pits
-       - [ ] Coffin (complete the level)
+       - [X] Coffin (complete the level)
        - [ ] Bars / grates
        - [X] Cross
        - [ ] Decorative elements
@@ -81,7 +81,8 @@
        - [ ] People notice immediately when you bite someone
        - [ ] People notice immediately if you turn into a bat
        - [X] Dim light makes people notice you faster
-     - [ ] People with weapons (stakes, torches, etc.) [0/1]
+     - [-] People with weapons (stakes, torches, etc.) [1/2]
+       - [X] People look for weapons if they don't have them
        - [ ] Torch makes people notice you faster
 
 ** TODO for art
