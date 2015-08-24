@@ -6,9 +6,19 @@ public class Enemy : MonoBehaviour {
 
     new Rigidbody rigidbody;
     public Material fadeMaterial;
+    GameObject awarenessBar;
     float speed = 2;
     float numberOfPints = 1;
-    float awareness = 0;
+    float _awareness;
+    float awareness {
+        get { return _awareness; }
+        set {
+            _awareness = value;
+            var scale = awarenessBar.transform.localScale;
+            scale.x = awareness / awarenessThreshold;
+            awarenessBar.transform.localScale = scale;
+        }
+    }
     float awarenessThreshold = 5;
     float maxAwareness = 7;
     bool aware { get { return awareness > awarenessThreshold; } }
@@ -19,7 +29,9 @@ public class Enemy : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        awarenessBar = transform.GetChild(0).gameObject;
         rigidbody = GetComponent<Rigidbody>();
+        awareness = 0;
     }
 
     public void Bite() {
@@ -66,7 +78,9 @@ public class Enemy : MonoBehaviour {
             
             if (aware) {
                 if (hasWeapon) {
-                    currentAction = AttackPlayer();
+                    if (CanSeePlayer()) {
+                        currentAction = AttackPlayer();
+                    }
                 } else {
                     currentAction = SearchForWeapon();
                 }
@@ -94,11 +108,13 @@ public class Enemy : MonoBehaviour {
     }
 
     IEnumerator AttackPlayer() {
+        Debug.Log(gameObject + " decides to attack");
         yield return 0;
         interrupt = true;
     }
 
     IEnumerator SearchForWeapon() {
+        Debug.Log(gameObject + " begins a search for a weapon");
         var items = ObjectRegistry.instance.ObjectsForKey("Weapon");
         if (items != null) {
             var index = (int) (Random.value * items.Count);
@@ -106,18 +122,22 @@ public class Enemy : MonoBehaviour {
             var path = WalkPathToPoint(target);
             while (path.MoveNext()) { yield return 0; }
             hasWeapon = true;
+        } else {
+            var destination = new Vector3(Random.value * 24, Random.value * 16);
+            var path = WalkPathToPoint(destination);
+            while (path.MoveNext()) { yield return 0; }
         }
         interrupt = true;
     }
 
     IEnumerator WalkPathToPoint(Vector3 position) {
+        Debug.Log(gameObject + " is walking to " + position);
         Route path = null;
         for (int i = 0; i < 32 && path == null; i++) {
             position = new Vector3(Random.value * 24, Random.value * 16);
             path = FindPathTo(position);
         }
 
-        Debug.Log("In order to get to " + position + ", " + gameObject.name + " is walking " + path);
         if (path != null) {
             foreach (var node in path.nodes) {
                 var walk = WalkToPoint(node.x, node.y);

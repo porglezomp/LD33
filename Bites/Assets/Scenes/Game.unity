@@ -548,6 +548,7 @@ GameObject:
   - 223: {fileID: 389973760}
   - 114: {fileID: 389973759}
   - 114: {fileID: 389973758}
+  - 114: {fileID: 389973761}
   m_Layer: 5
   m_Name: Finish
   m_TagString: Finish Screen
@@ -627,6 +628,18 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &389973761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 389973756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd41397ff9574e738c1c65d3b4b24a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pintsDisplay: {fileID: 1174970095}
 --- !u!1 &407258292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,7 +1825,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -40}
-  m_SizeDelta: {x: 120, y: 50}
+  m_SizeDelta: {x: 140, y: 50}
   m_Pivot: {x: 0, y: .5}
 --- !u!114 &1174970095
 MonoBehaviour:

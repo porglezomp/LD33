@@ -5,11 +5,16 @@ using System;
 
 public class Pints {
     static Text pintsDisplay;
-    static double numberOfPints = 4;
+    const double initalPints = 4;
+    public static double numberOfPints = 0;
     static double _pintsDecayRate = 0.02;
     public static double pintsDecayRate {
         get { return _pintsDecayRate; }
         set { _pintsDecayRate = value; }
+    }
+
+    public static void Reset() {
+        numberOfPints = initalPints;
     }
 
     public static void Init() {

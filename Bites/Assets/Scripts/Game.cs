@@ -14,6 +14,7 @@ public class Game : MonoBehaviour {
     
     public void StartGame(string level) {
         Debug.Log("load " + level);
+        Pints.Reset();
         var tilemap = GameObject.Find("Tilemap").GetComponent<Tilemap>();
         menu.SetActive(false);
         hud.SetActive(true);
@@ -36,6 +37,7 @@ public class Game : MonoBehaviour {
         finishScreen.SetActive(true);
         hud.SetActive(false);
         GameObject.Find("Tilemap").GetComponent<Tilemap>().DestroyMap();
+        finishScreen.GetComponent<EndScreen>().score = (float) Pints.numberOfPints;
     }
 
     public void Awake() {

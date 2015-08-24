@@ -41,7 +41,7 @@
     is a vampire. They're so silly!
 
 * Developing the game
-** TODO for programming
+** TODO for programming [3/7]
    - [X] Camera motion
    - [X] Basic motion [5/5]
      - [X] Add basic motion
@@ -85,7 +85,7 @@
        - [X] People look for weapons if they don't have them
        - [ ] Torch makes people notice you faster
 
-** TODO for art
+** TODO for art [0/4]
    - [-] Character art [1/5]
      - [X] Still character model
      - [ ] Texture the character
