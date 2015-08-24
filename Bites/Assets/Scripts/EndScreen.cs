@@ -12,4 +12,8 @@ public class EndScreen : MonoBehaviour {
             pintsDisplay.text = string.Format("{0:f2} Pints", _pints);
         }
     }
+
+    public void SubmitScore() {
+        var id = SystemInfo.deviceUniqueIdentifier;
+    }
 }

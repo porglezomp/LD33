@@ -37,7 +37,10 @@ public class Game : MonoBehaviour {
         finishScreen.SetActive(true);
         hud.SetActive(false);
         GameObject.Find("Tilemap").GetComponent<Tilemap>().DestroyMap();
-        finishScreen.GetComponent<EndScreen>().score = (float) Pints.numberOfPints;
+        
+        var endScreen = finishScreen.GetComponent<EndScreen>();
+        endScreen.score = (float) Pints.numberOfPints;
+        endScreen.SubmitScore();
     }
 
     public void Awake() {

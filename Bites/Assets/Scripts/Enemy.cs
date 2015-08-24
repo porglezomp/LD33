@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator FadeOut() {
         GetComponent<Collider>().enabled = false;
-        var renderer = GetComponent<Renderer>();
+        var renderer = transform.Find("enemy").GetComponent<Renderer>();
         renderer.material = fadeMaterial;
         renderer.shadowCastingMode = ShadowCastingMode.Off;
         var color = renderer.material.color;

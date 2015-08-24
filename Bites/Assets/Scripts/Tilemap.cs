@@ -20,7 +20,6 @@ public class Tilemap : MonoBehaviour {
         StartCoroutine(Pints.PintsDecay());
         RenderSettings.ambientLight = Color.black;
 
-        var path = Path.Combine(Application.dataPath, filename);
         var grid = new List<List<Tile>>();
         int x = 0, y = 0;
         var file = Resources.Load(filename) as TextAsset;
