@@ -7,7 +7,14 @@ public class Enemy : MonoBehaviour {
     new Rigidbody rigidbody;
     public Material fadeMaterial;
     GameObject awarenessBar;
-    float speed = 2;
+    bool dying = false;
+    float speed {
+        get {
+            if (dying) return 1;
+            if (aware) return 4;
+            return 2;
+        }
+    }
     float numberOfPints = 1;
     float _awareness;
     float awareness {
@@ -19,8 +26,10 @@ public class Enemy : MonoBehaviour {
             awarenessBar.transform.localScale = scale;
         }
     }
-    float awarenessThreshold = 5;
-    float maxAwareness = 7;
+    const float awarenessThreshold = 5;
+    const float maxAwareness = 7;
+    const float awarenessDecayFactor = 0.99f;
+    const float awarenessScaleFactor = 3;
     bool aware { get { return awareness > awarenessThreshold; } }
     bool hasWeapon = false;
     Vampire player {
@@ -36,7 +45,7 @@ public class Enemy : MonoBehaviour {
 
     public void Bite() {
         StartCoroutine(FadeOut());
-        speed /= 2;
+        dying = true;
     }
 
     IEnumerator FadeOut() {
@@ -67,9 +76,11 @@ public class Enemy : MonoBehaviour {
             if (aware) {
                 awareness = maxAwareness;
             } else {
-                awareness += player.suspiciousness * Time.deltaTime;
+                awareness += player.suspiciousness * awarenessScaleFactor * Time.deltaTime;
                 if (aware) interrupt = true;
             }
+        } else {
+            awareness *= awarenessDecayFactor;
         }
 
         if (interrupt) {
