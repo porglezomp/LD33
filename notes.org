@@ -50,19 +50,19 @@
      - [X] Improve momentum curve
      - [X] Remove likely collision jaggies
    - [X] Menu
-   - [-] Pints system [3/6]
+   - [-] Pints system [4/6]
      - [X] Display number of pints
      - [X] Drinking blood / biting gives you pints
      - [X] You very slowly lose pints, (hunger?) so speed matters
-     - [ ] Pints act as health, so getting hurt reduces your score
+     - [X] Pints act as health, so getting hurt reduces your score
      - [ ] Leaderboard for who can get the most pints
-     - [ ] Destroying crosses gives you pints (?)
+     - [-] Destroying crosses gives you pints (?)
    - [-] Levels [4/6]
      - [X] Read tilemaps from ASCII tilemaps
      - [X] Generate levels based on map
      - [X] Place player based on tilemap
      - [X] Add more decorations to tilemap
-     - [ ] Change to better tilemap format (image?)
+     - [-] Change to better tilemap format (image?)
      - [-] Add more level elements [3/5]
        - [X] Pits
        - [X] Coffin (complete the level)
@@ -71,7 +71,7 @@
        - [ ] Decorative elements
    - [-] Light [1/2]
      - [X] Dim light makes people notice you faster
-     - [ ] Bright light / sunlight kills you almost immediately
+     - [-] Bright light / sunlight kills you almost immediately
    - [-] People [3/5]
      - [X] Boring still people
      - [X] Ability to turn them into vampires
@@ -79,11 +79,13 @@
      - [-] People acting interesting and responding [2/4]
        - [X] People notice that you've a vampire over time
        - [ ] People notice immediately when you bite someone
-       - [ ] People notice immediately if you turn into a bat
+       - [-] People notice immediately if you turn into a bat
        - [X] Dim light makes people notice you faster
-     - [-] People with weapons (stakes, torches, etc.) [1/2]
+     - [-] People with weapons (stakes, torches, etc.) [1/4]
        - [X] People look for weapons if they don't have them
-       - [ ] Torch makes people notice you faster
+       - [ ] People look visibly different when holding weapons
+       - [ ] People look visibly different while attacking
+       - [-] Torch makes people notice you faster
 
 ** TODO for art [0/4]
    - [-] Character art [1/5]
@@ -96,8 +98,8 @@
        - [ ] Turn into dust animation
      - [ ] Footstep sounds
      - [ ] More sounds
-   - [-] Enemies art [0/3]
-     - [ ] Still enemies
+   - [-] Enemies art [1/3]
+     - [X] Still enemies
      - [-] Vampire version of still enemies
      - [-] Animated enemies [0/4]
        - [ ] Walk animation
