@@ -76,9 +76,9 @@
      - [X] Boring still people
      - [X] Ability to turn them into vampires
      - [X] People moving around (Dijkstra's Algorithm for pathfinding)
-     - [-] People acting interesting and responding [2/4]
+     - [-] People acting interesting and responding [3/4]
        - [X] People notice that you've a vampire over time
-       - [ ] People notice immediately when you bite someone
+       - [X] People notice immediately when you bite someone
        - [-] People notice immediately if you turn into a bat
        - [X] Dim light makes people notice you faster
      - [-] People with weapons (stakes, torches, etc.) [1/4]

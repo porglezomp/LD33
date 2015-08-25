@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour {
         get { return _awareness; }
         set {
             _awareness = value;
+            if (_awareness > maxAwareness) _awareness = maxAwareness;
             var scale = awarenessBar.transform.localScale;
             scale.x = awareness / awarenessThreshold;
             awarenessBar.transform.localScale = scale;

@@ -4,7 +4,7 @@ using System.Collections;
 public class Vampire : MonoBehaviour {
 
     bool transitionedToBatThisFrame;
-    bool bitSomeoneThisFrame;
+    public bool bitSomeoneThisFrame;
 
     public float suspiciousness {
         get {
@@ -18,7 +18,7 @@ public class Vampire : MonoBehaviour {
     }
     
     // Update is called once per frame
-    void Update () {
+    void LateUpdate () {
         transitionedToBatThisFrame = false;
         bitSomeoneThisFrame = false;
     }
