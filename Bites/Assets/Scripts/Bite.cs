@@ -21,10 +21,12 @@ public class Bite : MonoBehaviour {
 
         if (Input.GetButtonDown("Bite") && timer <= 0) {
             foreach (var collider in Physics.OverlapSphere(biteCenter, biteRadius)) {
-                collider.gameObject.SendMessage("Bite", SendMessageOptions.DontRequireReceiver);
-                vampire.bitSomeoneThisFrame = true;
-                timer = cooldown;
-                break;
+                if (collider.gameObject.tag == "Enemy") {
+                    collider.gameObject.SendMessage("Bite", SendMessageOptions.DontRequireReceiver);
+                    vampire.bitSomeoneThisFrame = true;
+                    timer = cooldown;
+                    break;
+                }
             }
         }
     }

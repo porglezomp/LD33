@@ -45,7 +45,7 @@ public class Tilemap : MonoBehaviour {
                     tile = Tile.WallTile;
                     break;
                 case 'E':
-                    CreateObject(enemyObject, x, y).tag = "Map Tile";
+                    CreateObject(enemyObject, x, y);
                     CreateFloor(x, y).tag = "Map Tile";
                     break;
                 case '+':
@@ -96,6 +96,9 @@ public class Tilemap : MonoBehaviour {
     public void DestroyMap() {
         foreach (var tile in GameObject.FindGameObjectsWithTag("Map Tile")) {
             Destroy(tile);
+        }
+        foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy")) {
+            Destroy(enemy);
         }
         Destroy(GameObject.FindWithTag("Player"));
     }
