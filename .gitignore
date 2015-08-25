@@ -1,4 +1,9 @@
 SECRET
+*.zip
+TheVampire.app
+TheVampireLD33Linux
+TheVampireLD33Windows
+TheVampireJS
 
 ### Emacs files ###
 \#*\#
