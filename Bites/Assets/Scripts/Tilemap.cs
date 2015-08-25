@@ -59,6 +59,13 @@ public class Tilemap : MonoBehaviour {
                     ObjectRegistry.instance.RegisterObjectForKey(obj, "Light");
                     CreateFloor(x, y).tag = "Map Tile";
                     break;
+                case 'L':
+                    obj = CreateObject(torchObject, x, y);
+                    obj.transform.Rotate(Vector3.back, 90);
+                    obj.tag = "Map Tile";
+                    ObjectRegistry.instance.RegisterObjectForKey(obj, "Light");
+                    CreateFloor(x, y).tag = "Map Tile";
+                    break;
                 case 'W':
                     obj = CreateObject(stakesObject, x, y);
                     obj.tag = "Map Tile";

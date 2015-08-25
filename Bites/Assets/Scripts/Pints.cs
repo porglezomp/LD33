@@ -24,6 +24,10 @@ public class Pints {
 
     public static void AddPints(double pintsIncrement) {
         numberOfPints += pintsIncrement;
+        if (numberOfPints < 0) {
+            numberOfPints = 0;
+            Game.instance.EndGame();
+        }
         displayPints();
     }
 

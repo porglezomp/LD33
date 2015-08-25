@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour {
         awarenessBar = transform.GetChild(0).gameObject;
         rigidbody = GetComponent<Rigidbody>();
         awareness = 0;
+        name = "Enemy " + Random.value;
     }
 
     public void Bite() {
@@ -120,7 +121,20 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator AttackPlayer() {
         Debug.Log(gameObject + " decides to attack");
-        yield return 0;
+        int targetX = -1, targetY = -1;
+        IEnumerator path = null;
+        while (aware) {
+            if (path == null || targetX != Mathf.Round(player.transform.position.x) || targetY != Mathf.Round(player.transform.position.y)) {
+                Interrupt(path);
+                targetX = (int) Mathf.Round(player.transform.position.x);
+                targetY = (int) Mathf.Round(player.transform.position.y);
+                path = WalkPathToPoint(player.transform.position);
+            }
+            if (Vector3.Distance(transform.position, player.transform.position) < 1.5) {
+                Pints.AddPints(-3f * Time.deltaTime);
+            }
+            yield return path.MoveNext();
+        }
         interrupt = true;
     }
 
@@ -132,6 +146,7 @@ public class Enemy : MonoBehaviour {
             var target = items[index].transform.position;
             var path = WalkPathToPoint(target);
             while (path.MoveNext()) { yield return 0; }
+            Debug.Log(gameObject + " has found a weapon");
             hasWeapon = true;
         } else {
             var destination = new Vector3(Random.value * 24, Random.value * 16);
@@ -142,15 +157,21 @@ public class Enemy : MonoBehaviour {
     }
 
     IEnumerator WalkPathToPoint(Vector3 position) {
-        Debug.Log(gameObject + " is walking to " + position);
-        Route path = null;
+        // Debug.Log(gameObject + " is walking to " + position);
+        Route path = FindPathTo(position);
         for (int i = 0; i < 32 && path == null; i++) {
             position = new Vector3(Random.value * 24, Random.value * 16);
             path = FindPathTo(position);
         }
 
         if (path != null) {
+            var firstNode = true;
             foreach (var node in path.nodes) {
+                if (firstNode) {
+                    firstNode = false;
+                    continue;
+                }
+
                 var walk = WalkToPoint(node.x, node.y);
                 while (walk.MoveNext()) {
                     DrawRoute(path);
@@ -158,6 +179,7 @@ public class Enemy : MonoBehaviour {
                 }
             }
         }
+        Debug.Log("Finally walked to");
         interrupt = true;
     }
 
