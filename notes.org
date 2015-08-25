@@ -81,10 +81,10 @@
        - [X] People notice immediately when you bite someone
        - [-] People notice immediately if you turn into a bat
        - [X] Dim light makes people notice you faster
-     - [-] People with weapons (stakes, torches, etc.) [1/4]
+     - [-] People with weapons (stakes, torches, etc.) [3/4]
        - [X] People look for weapons if they don't have them
-       - [ ] People look visibly different when holding weapons
-       - [ ] People look visibly different while attacking
+       - [X] People look visibly different when holding weapons
+       - [X] People look visibly different while attacking
        - [-] Torch makes people notice you faster
 
 ** TODO for art [0/4]

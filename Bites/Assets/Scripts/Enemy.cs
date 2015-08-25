@@ -5,13 +5,14 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 
     new Rigidbody rigidbody;
+    Animator animator;
     public Material fadeMaterial;
     GameObject awarenessBar;
     bool dying = false;
     float speed {
         get {
             if (dying) return 1;
-            if (aware) return 4;
+            if (aware || searchingForWeapon) return 4;
             return 2;
         }
     }
@@ -27,12 +28,21 @@ public class Enemy : MonoBehaviour {
             awarenessBar.transform.localScale = scale;
         }
     }
+    bool searchingForWeapon = false;
+
     const float awarenessThreshold = 5;
     const float maxAwareness = 7;
     const float awarenessDecayFactor = 0.99f;
     const float awarenessScaleFactor = 3;
     bool aware { get { return awareness > awarenessThreshold; } }
-    bool hasWeapon = false;
+    bool _hasWeapon = false;
+    bool hasWeapon {
+        get { return _hasWeapon; }
+        set {
+            _hasWeapon = value;
+            animator.SetBool("HasWeapon", hasWeapon);
+        }
+    }
     Vampire player {
         get { return GameObject.FindWithTag("Player").GetComponent<Vampire>(); }
     }
@@ -42,6 +52,7 @@ public class Enemy : MonoBehaviour {
         awarenessBar = transform.GetChild(0).gameObject;
         rigidbody = GetComponent<Rigidbody>();
         awareness = 0;
+        animator = GetComponentInChildren<Animator>();
         name = "Enemy " + Random.value;
     }
 
@@ -52,7 +63,7 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator FadeOut() {
         GetComponent<Collider>().enabled = false;
-        var renderer = transform.Find("enemy").GetComponent<Renderer>();
+        var renderer = transform.Find("enemy/Cube_001").GetComponent<Renderer>();
         renderer.material = fadeMaterial;
         renderer.shadowCastingMode = ShadowCastingMode.Off;
         var color = renderer.material.color;
@@ -83,6 +94,12 @@ public class Enemy : MonoBehaviour {
             }
         } else {
             awareness *= awarenessDecayFactor;
+        }
+
+        if (hasWeapon && aware) {
+            animator.SetBool("Attacking", true);
+        } else {
+            animator.SetBool("Attacking", false);
         }
 
         if (interrupt) {
@@ -116,6 +133,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void Interrupt(IEnumerator routine) {
+        searchingForWeapon = false;
         if (routine == null) return;
         StopCoroutine(routine);
     }
@@ -131,8 +149,9 @@ public class Enemy : MonoBehaviour {
                 targetY = (int) Mathf.Round(player.transform.position.y);
                 path = WalkPathToPoint(player.transform.position);
             }
-            if (Vector3.Distance(transform.position, player.transform.position) < 1.5) {
-                Pints.AddPints(-3f * Time.deltaTime);
+            if (Vector3.Distance(transform.position, player.transform.position) < 0.75) {
+                Debug.Log(Vector3.Distance(transform.position, player.transform.position));
+                Pints.AddPints(-2f * Time.deltaTime);
             }
             yield return path.MoveNext();
         }
@@ -146,13 +165,19 @@ public class Enemy : MonoBehaviour {
             var index = (int) (Random.value * items.Count);
             var target = items[index].transform.position;
             var path = WalkPathToPoint(target);
-            while (path.MoveNext()) { yield return 0; }
+            while (path.MoveNext()) {
+                searchingForWeapon = true;
+                yield return 0;
+            }
             Debug.Log(gameObject + " has found a weapon");
             hasWeapon = true;
         } else {
             var destination = new Vector3(Random.value * 24, Random.value * 16);
             var path = WalkPathToPoint(destination);
-            while (path.MoveNext()) { yield return 0; }
+            while (path.MoveNext()) {
+                searchingForWeapon = true;
+                yield return 0;
+            }
         }
         interrupt = true;
     }
